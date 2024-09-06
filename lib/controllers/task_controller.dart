@@ -18,8 +18,4 @@ class TaskController {
   static void deleteTask(PanelModel panel, TaskItem task) {
     panel.items.remove(task);
   }
-
-  static void addTask(PanelModel panel, TaskItem task) {
-    panel.items.add(task);
-  }
 }

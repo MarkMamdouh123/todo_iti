@@ -10,8 +10,6 @@ class PanelModel {
     this.isCompleted,
     required this.isExpanded,
   });
-
-  bool get allTasksCompleted => items.every((task) => task.isDone);
 }
 
 class TaskItem {
