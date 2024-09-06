@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: TaskController.panels.length,
             itemBuilder: (context, index) {
               final panel = TaskController.panels[index];
-              return ExpansionPanelDemo(
+              return ExpansionPanelItem(
                 panel: panel,
                 onDelete: () => setState(() {
                   TaskController.deletePanel(panel);

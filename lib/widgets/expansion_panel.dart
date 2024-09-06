@@ -2,21 +2,21 @@ import 'package:flutter/material.dart';
 import '../models/panel_model.dart';
 import '../controllers/task_controller.dart'; // Import your TaskController
 
-class ExpansionPanelDemo extends StatefulWidget {
+class ExpansionPanelItem extends StatefulWidget {
   final PanelModel panel;
   final VoidCallback onDelete;
 
-  const ExpansionPanelDemo({
+  const ExpansionPanelItem({
     super.key,
     required this.panel,
     required this.onDelete,
   });
 
   @override
-  _ExpansionPanelDemoState createState() => _ExpansionPanelDemoState();
+  _ExpansionPanelItemState createState() => _ExpansionPanelItemState();
 }
 
-class _ExpansionPanelDemoState extends State<ExpansionPanelDemo> {
+class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
   bool isChecked = false;
 
   @override
