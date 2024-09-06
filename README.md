@@ -1,6 +1,6 @@
 # SHOW CASE
-![TODO](todo_showUI.gif)
+![TODO](GIFS/todo_showUI.gif)
 
 # UI_IN_ACTION
 
-![TODO](todo.gif)
+![TODO](GIFS/todo.gif)
