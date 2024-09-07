@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todo_iti/views/task_bottom_sheet.dart';
+import 'package:todo_iti/widgets/bottom_sheets/task_bottom_sheet.dart';
 
 import '../controllers/task_controller.dart';
 import '../widgets/expansion_panel.dart';
@@ -54,9 +54,17 @@ class _HomePageState extends State<HomePage> {
               final panel = TaskController.panels[index];
               return ExpansionPanelItem(
                 panel: panel,
-                onDelete: () => setState(() {
-                  TaskController.deletePanel(panel);
-                }),
+                onDeleteTask: (task) {
+                  setState(() {
+                    TaskController.deleteTask(panel, task);
+                    if (panel.items.isEmpty) {
+                      TaskController.deletePanel(panel);
+                    }
+                  });
+                },
+                // onDelete: () => setState(() {
+                //   TaskController.deletePanel(panel);
+                // }),
               );
             },
           ),
@@ -86,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                 context: context,
                 builder: (context) {
                   return TaskBottomSheet(
-                    onConfirm: (panel) {
+                    onAdd: (panel) {
                       setState(() {
                         TaskController.addPanel(panel);
                       });

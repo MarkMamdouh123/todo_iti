@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_iti/widgets/custom_elevated_button.dart';
 
-import '../models/panel_model.dart';
+import '../../models/panel_model.dart';
+import '../../utils/select_time.dart';
 
 class TaskBottomSheet extends StatefulWidget {
-  final Function(PanelModel) onConfirm;
+  final Function(PanelModel) onAdd;
 
-  TaskBottomSheet({required this.onConfirm});
+  TaskBottomSheet({required this.onAdd});
 
   @override
   State<TaskBottomSheet> createState() => _TaskBottomSheetState();
@@ -71,7 +72,17 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                     const SizedBox(width: 12),
                     InkWell(
                       onTap: () {
-                        _selectTime(context);
+                        selectTime(
+                          onTimeSelected: (selectedTime, isTimeSelected) {
+                            setState(() {
+                              this.selectedTime = selectedTime;
+                              this.isTimeSelected = isTimeSelected;
+                            });
+                          },
+                          context: context,
+                          selectedTime: selectedTime,
+                          isTimeSelected: isTimeSelected,
+                        );
                       },
                       child: Container(
                         padding: const EdgeInsets.all(8),
@@ -185,7 +196,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                         time: selectedTime.format(context),
                         isExpanded: false,
                       );
-                      widget.onConfirm(panel);
+                      widget.onAdd(panel);
                       Navigator.pop(context);
                     }
                   },
@@ -196,18 +207,5 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
         ),
       ),
     );
-  }
-
-  Future<void> _selectTime(BuildContext context) async {
-    final TimeOfDay? picked = await showTimePicker(
-      context: context,
-      initialTime: selectedTime,
-    );
-    if (picked != null && picked != selectedTime) {
-      setState(() {
-        selectedTime = picked;
-        isTimeSelected = true;
-      });
-    }
   }
 }

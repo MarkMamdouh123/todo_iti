@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import '../models/panel_model.dart';
-import '../controllers/task_controller.dart'; // Import your TaskController
+import '../controllers/task_controller.dart';
 
 class ExpansionPanelItem extends StatefulWidget {
   final PanelModel panel;
-  final VoidCallback onDelete;
-
+  final Function(TaskItem task) onDeleteTask;
   const ExpansionPanelItem({
     super.key,
     required this.panel,
-    required this.onDelete,
+    required this.onDeleteTask,
   });
 
   @override
@@ -161,12 +160,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
             ),
             TextButton(
               onPressed: () {
-                setState(() {
-                  TaskController.deleteTask(widget.panel, task);
-                  if (widget.panel.items.isEmpty) {
-                    widget.onDelete();
-                  }
-                });
+                widget.onDeleteTask(task);
                 Navigator.of(context).pop();
               },
               child: const Text(
@@ -180,7 +174,6 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
     );
   }
 
-  // Handle Task Editing
   void _showEditDialog(TaskItem task) {
     final TextEditingController editingController =
         TextEditingController(text: task.description);
