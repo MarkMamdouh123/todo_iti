@@ -62,9 +62,7 @@ class _HomePageState extends State<HomePage> {
                     }
                   });
                 },
-                // onDelete: () => setState(() {
-                //   TaskController.deletePanel(panel);
-                // }),
+
               );
             },
           ),

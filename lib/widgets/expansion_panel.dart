@@ -62,7 +62,9 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
                           fontWeight: FontWeight.bold,
                           color: completedTasks == totalTasks
                               ? Colors.green
-                              : Colors.orange),
+                              : completedTasks == 0
+                                  ? Colors.grey
+                                  : Colors.orange),
                       completedTasks == totalTasks
                           ? "Completed"
                           : "$completedTasks/$totalTasks Tasks Completed",
