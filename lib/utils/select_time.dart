@@ -10,7 +10,7 @@ Future<void> selectTime({
     context: context,
     initialTime: selectedTime,
   );
-  if (picked != null && picked != selectedTime) {
+  if (picked != null) {
     onTimeSelected(picked, true);
   }
 }
