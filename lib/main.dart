@@ -10,13 +10,15 @@ void main() async {
   Hive.registerAdapter(PanelModelAdapter());
   Hive.registerAdapter(TaskItemAdapter());
   await Hive.openBox<PanelModel>(kTasksBox);
-  runApp(ToDoApp());
+  runApp(const ToDoApp());
 }
 
 class ToDoApp extends StatelessWidget {
+  const ToDoApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HomePage(),
     );

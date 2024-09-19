@@ -8,7 +8,7 @@ import '../../utils/select_time.dart';
 class TaskBottomSheet extends StatefulWidget {
   final Function(PanelModel) onAdd;
 
-  TaskBottomSheet({required this.onAdd});
+  const TaskBottomSheet({super.key, required this.onAdd});
 
   @override
   State<TaskBottomSheet> createState() => _TaskBottomSheetState();
@@ -112,7 +112,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                 ),
                 const SizedBox(height: 12),
                 TextFormField(
-                  style: TextStyle(fontSize: 19),
+                  style: const TextStyle(fontSize: 19),
                   controller: textController,
                   decoration: InputDecoration(
                     hintText: 'Enter a task ',
@@ -154,7 +154,7 @@ class _TaskBottomSheetState extends State<TaskBottomSheet> {
                       return ListTile(
                         title: Text(
                           tasks[index].description,
-                          style: TextStyle(fontSize: 23),
+                          style: const TextStyle(fontSize: 23),
                         ),
                       );
                     },

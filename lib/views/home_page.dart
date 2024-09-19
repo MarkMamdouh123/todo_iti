@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:hive_flutter/hive_flutter.dart'; // Import Hive
 import '../controllers/task_controller.dart';
 import '../widgets/expansion_panel.dart';
 import 'package:todo_iti/widgets/bottom_sheets/task_bottom_sheet.dart';
@@ -115,9 +114,9 @@ class _HomePageState extends State<HomePage> {
                 },
               );
             },
-            child: Row(
+            child: const Row(
               mainAxisSize: MainAxisSize.min,
-              children: const [
+              children: [
                 Icon(
                   Icons.add,
                   size: 30,

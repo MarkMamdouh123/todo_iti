@@ -23,7 +23,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 7),
         child: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border.fromBorderSide(
               BorderSide(color: Colors.blue, width: 2),
             ),
@@ -47,7 +47,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
 
                   return ListTile(
                     contentPadding:
-                        EdgeInsets.only(top: 18, bottom: 18, left: 2),
+                        const EdgeInsets.only(top: 18, bottom: 18, left: 2),
                     title: Text(
                       widget.panel.time,
                       style: const TextStyle(
@@ -75,7 +75,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
                   child: Column(
                     children: widget.panel.items.map((task) {
                       return Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           border: Border.fromBorderSide(
                             BorderSide(color: Colors.black, width: 1),
                           ),
@@ -189,7 +189,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
             style: TextStyle(fontSize: 22),
           ),
           content: TextField(
-            style: TextStyle(fontSize: 20),
+            style: const TextStyle(fontSize: 20),
             controller: editingController,
             decoration: const InputDecoration(
               hintText: "Edit this task",
