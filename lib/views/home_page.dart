@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:todo_iti/widgets/bottom_sheets/task_bottom_sheet.dart';
-
+import 'package:hive_flutter/hive_flutter.dart'; // Import Hive
 import '../controllers/task_controller.dart';
 import '../widgets/expansion_panel.dart';
+import 'package:todo_iti/widgets/bottom_sheets/task_bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      for (var panel in TaskController.panels) {
+        panel.isExpanded = false;
+      }
+      TaskController.loadPanels();
+      for (var panel in TaskController.panels) {
+        panel.isExpanded = false;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -59,10 +73,10 @@ class _HomePageState extends State<HomePage> {
                     TaskController.deleteTask(panel, task);
                     if (panel.items.isEmpty) {
                       TaskController.deletePanel(panel);
+                      setState(() {});
                     }
                   });
                 },
-
               );
             },
           ),

@@ -10,7 +10,7 @@ class PanelModel extends HiveObject {
   @HiveField(2)
   bool? isCompleted;
   @HiveField(3)
-  bool isExpanded;
+  bool isExpanded = false;
 
   PanelModel({
     required this.items,

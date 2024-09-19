@@ -17,7 +17,6 @@ class ExpansionPanelItem extends StatefulWidget {
 
 class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
   bool isChecked = false;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -95,6 +94,7 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
                             onChanged: (value) {
                               setState(() {
                                 task.isDone = value!;
+                                TaskController.updatePanel(widget.panel);
                               });
                             },
                           ),
@@ -207,7 +207,9 @@ class _ExpansionPanelItemState extends State<ExpansionPanelItem> {
               onPressed: () {
                 if (editingController.text.isNotEmpty) {
                   setState(() {
-                    TaskController.editTask(task, editingController.text);
+                    TaskController.editTask(
+                        widget.panel, task, editingController.text);
+                    TaskController.updatePanel(widget.panel);
                   });
                   Navigator.of(context).pop();
                 }
